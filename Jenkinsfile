@@ -1,21 +1,15 @@
 pipeline {
     agent any
-
-
+    tools {
+        jdk 'Java 17'
+        maven 'Maven'   // Or 'Maven 3.9.0' if you named it like that
+    }
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/mohamadabbas2299/demo.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean install'
             }
         }
-
         stage('Test') {
             steps {
                 sh 'mvn test'
