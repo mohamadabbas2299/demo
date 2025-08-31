@@ -33,5 +33,11 @@ pipeline {
                 '''
             }
         }
+        stage('Docker Build') {
+    steps {
+        sh 'docker build -t springboot-app .'
+        sh 'docker run -d -p 8081:8080 springboot-app'
+    }
+}
     }
 }
